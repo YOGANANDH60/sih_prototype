@@ -389,6 +389,7 @@
             .quick-help span{
                 margin-top: 8px;
             }
+        
     </style>
 </head>
 <body>
@@ -397,27 +398,23 @@
             <h1>🐄 Indian Cattle & Buffalo Breed Recognition</h1>
             <p>Advanced AI-powered breed identification system for Indian livestock</p>
         </div>
-            <div class="quick-help">
+        <div class="quick-help">
                  <span id="modeHelpText">🐃 For Farmers: Helps in proper identification of livestock, improving breeding and management practices.</span>
                  <span id="modeHelpText">👩‍⚕️ For Veterinarians: Assists in disease control, vaccination planning, and breed-specific treatments.</span>
                  <span id="modeHelpText">🏛️ For Government & Insurance: Ensures transparency in cattle insurance claims and helps monitor breed conservation programs.</span>
             </div>
-       
 
         <div class="main-content">
             <div class="upload-section">
-                <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-box" onclick="chooseFromGallery()">
                     <div class="upload-icon">📸</div>
-                    <div class="upload-text">Click to upload, take photo, or drag & drop an image</div>
+                    <div class="upload-text">Click to upload from gallery, take photo, or drag & drop an image</div>
                     <div class="upload-subtext">Supports JPG, PNG, JPEG formats</div>
                 </div>
-                <input type="file" id="fileInput" class="file-input" accept="image/*" capture="environment" onchange="handleImageUpload(event)">
-                <button class="btn" onclick="document.getElementById('fileInput').click()">📁 Choose Image</button>
+                <input type="file" id="fileInput" class="file-input" accept="image/*" onchange="handleImageUpload(event)">
+                <button class="btn" onclick="chooseFromGallery()">📁 Choose from Gallery</button>
                 <button class="btn" onclick="openCamera()">📷 Take Photo</button>
             </div>
-           
-
-
 
             <div id="loadingSection" class="loading" style="display: none;">
                 <div class="spinner"></div>
@@ -551,6 +548,11 @@
                 population: 'Approximately 1.2 million (2019 Livestock Census)'
             }
         };
+
+        // Function to choose from gallery
+        function chooseFromGallery() {
+            document.getElementById('fileInput').click();
+        }
 
         function handleImageUpload(event) {
             const file = event.target.files[0];
